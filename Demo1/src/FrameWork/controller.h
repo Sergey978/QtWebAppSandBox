@@ -6,10 +6,11 @@
 
 using namespace stefanfrings;
 
-class Controller
+class Controller: public QObject
 {
+    Q_OBJECT
 public:
-    Controller();
+    Controller(QObject* parent=0);
 
     void setRequestResponse(HttpRequest& request, HttpResponse& response);
 

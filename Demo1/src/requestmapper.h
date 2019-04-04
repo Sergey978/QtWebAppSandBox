@@ -8,7 +8,10 @@
 
 #include "httprequesthandler.h"
 #include "FrameWork/Router/urlmatcher.h"
-#include "/controller/homecontroller.h"
+#include "FrameWork/controller.h"
+#include "controller/homecontroller.h"
+
+
 
 using namespace stefanfrings;
 
@@ -41,7 +44,9 @@ public:
     void service(HttpRequest& request, HttpResponse& response);
 
      UrlMatcher  matcher;
-     HomeController homeController;
+
+     Controller * controller = new Controller();
+     HomeController * homeController = new HomeController(controller);
 
 
 

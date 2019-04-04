@@ -1,7 +1,7 @@
 #include "homecontroller.h"
-#include "../FrameWork/controller.h"
 
-HomeController::HomeController()
+
+HomeController::HomeController(QObject* parent) : Controller  (parent)
 {
 
 }
@@ -9,10 +9,9 @@ HomeController::HomeController()
 void HomeController::index()
 {
 
-    response->write("<html><body>");
-    response->write("<h1> Hello Home controller!!</h1>");
+     qDebug("response");
 
-    response->write("</body></html>",true);
+    response->write("Hello World",false);
 
 
 }

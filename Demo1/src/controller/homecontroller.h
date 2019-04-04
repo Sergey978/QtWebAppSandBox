@@ -5,9 +5,10 @@
 
 class HomeController: public Controller
 {
+    Q_OBJECT
 
 public:
-    HomeController();
+    HomeController(QObject* parent=0);
     void index();
 };
 

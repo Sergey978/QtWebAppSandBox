@@ -15,7 +15,6 @@
 
 #include "controller/homecontroller.h"
 
-
 /** Redirects log messages to a file */
 extern FileLogger* logger;
 
@@ -25,14 +24,9 @@ extern StaticFileController* staticFileController;
 RequestMapper::RequestMapper(QObject* parent)
     :HttpRequestHandler(parent)
 {
-
-
-
     matcher.regController("GET|POST;home/",
                               fnptr<void(UrlParams)>([&](UrlParams )
-    {homeController.index();}));
-
-
+    {homeController->index();}));
 
     qDebug("RequestMapper: created");
 }
@@ -40,6 +34,7 @@ RequestMapper::RequestMapper(QObject* parent)
 
 RequestMapper::~RequestMapper()
 {
+    delete controller;
 
     qDebug("RequestMapper: deleted");
 }
@@ -53,6 +48,7 @@ void RequestMapper::service(HttpRequest& request, HttpResponse& response)
     // For the following pathes, each request gets its own new instance of the related controller.
 
 
+    controller->setRequestResponse(request, response);
 
     Route * route = matcher.match(request.getMethod(), request.getPath().toStdString());
 
