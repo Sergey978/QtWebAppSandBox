@@ -14,6 +14,12 @@ void Controller::setRequestResponse(HttpRequest &request, HttpResponse &response
 
 }
 
+HttpResponse &Controller::getResponse()
+{
+    return *response;
+
+}
+
 
 
  

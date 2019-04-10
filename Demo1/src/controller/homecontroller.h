@@ -3,13 +3,18 @@
 
 #include "../FrameWork/controller.h"
 
-class HomeController: public Controller
+class HomeController : public QObject
 {
     Q_OBJECT
 
 public:
-    HomeController(QObject* parent=0);
+    HomeController(Controller * controller);
+
+public slots:
     void index();
+    void withParams(QString param);
+private :
+    Controller * controller;
 };
 
 #endif // HOMECONTROLLER_H

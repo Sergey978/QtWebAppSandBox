@@ -1,7 +1,7 @@
 #include "homecontroller.h"
 
 
-HomeController::HomeController(QObject* parent) : Controller  (parent)
+HomeController::HomeController(Controller * cont) : controller  (cont)
 {
 
 }
@@ -9,9 +9,15 @@ HomeController::HomeController(QObject* parent) : Controller  (parent)
 void HomeController::index()
 {
 
-     qDebug("response");
+    qDebug("response");
 
-    response->write("Hello World",false);
+    controller->getResponse().write("Hello World",false);
 
+}
 
+void HomeController::withParams(QString param)
+{
+    QByteArray res = "hello world";
+    res.append(param);
+    controller->getResponse().write(res, true);
 }

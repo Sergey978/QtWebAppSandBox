@@ -48,8 +48,6 @@ public:
      Controller * controller = new Controller();
      HomeController * homeController = new HomeController(controller);
 
-
-
 };
 
 #endif // REQUESTMAPPER_H
