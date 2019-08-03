@@ -15,7 +15,7 @@ public:
     void setRequestResponse(HttpRequest& request, HttpResponse& response);
     HttpResponse & getResponse();
 
-     ~Controller(){}
+     ~Controller(){  qDebug("Controller: deleted");  }
 
 protected:
     HttpRequest * request;
